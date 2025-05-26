@@ -1,0 +1,98 @@
+.movie {
+    display: flex;
+    width: 451px;
+    height: 279px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #fff;
+}
+
+.movie-img-wrapper {
+    width: 183px;
+    height: 100%;
+}
+
+.movie-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movie-content {
+    padding: 10px 9px 2px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.movie-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+
+.movie h1 {
+    font-size: 20px;
+    line-height: 28px;
+    margin: 0;
+    font-weight: 400;
+    text-align: left;
+    white-space: normal;
+    word-break: break-word;
+    flex-grow: 1;
+
+}
+
+.movie-rating {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #E9D100;
+    background: #fff;
+    margin-left: auto;
+}
+
+.movie-text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.movie-date {
+    font-size: 12px;
+    line-height: 22px;
+    color: rgba(130, 126, 126, 1);
+    display: block;
+}
+
+.movie-genres {
+    margin: 7px 0;
+    display: flex;
+    gap: 8px;
+}
+
+.movie-genres button {
+    background: #FAFAFA;
+    border: 1px solid #D9D9D9;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 15px;
+    color: rgba(0, 0, 0, 0.65);
+    padding: 2px 5px;
+}
+
+.movie-description {
+    text-align: left;
+    display: flex;
+    font-size: 12px;
+    line-height: 22px;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.movie-stars {
+    margin-top: 1px;
+    height: 46px;
+}
