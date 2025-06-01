@@ -25,7 +25,6 @@ export default function RatedTab({ sessionId, ratingUpdated }) {
           return;
         }
 
-        // Загрузка фильмов с API
         const data = await fetchRatedMovies(sessionId, currentPage);
         console.log("Fetched movies:", data.results);
 
