@@ -20,11 +20,12 @@ export default function RatedTab({ sessionId, ratingUpdated }) {
         setLoading(true);
         setError(null);
 
+        if (!sessionId) {
+          setError("Необходимо создать сессию для получения оцененных фильмов");
+          return;
+        }
+
         const data = await fetchRatedMovies(sessionId, currentPage);
-        console.log(
-          `Loaded page ${currentPage}:`,
-          data.results?.map((m) => m.id)
-        );
 
         if (isActive) {
           setMovies(data.results || []);
@@ -32,7 +33,7 @@ export default function RatedTab({ sessionId, ratingUpdated }) {
         }
       } catch (err) {
         if (isActive) {
-          console.error('Error loading rated movies:', err);
+          console.error("Error loading rated movies:", err);
           setError(err.message);
         }
       } finally {
