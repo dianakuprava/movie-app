@@ -1,84 +1,58 @@
-import { useState, useCallback } from 'react';
-import PaginationControl from './PaginationControl/PaginationControl.jsx';
-import { Spin, Alert } from 'antd';
+import { useState, useEffect } from 'react';
+import { Spin, message } from 'antd';
+import { createGuestSession } from './API/movieDb';
+import AppTabs from './AppTabs/AppTabs';
+import GenresProvider from './GenresProvider/GenresProvider';
 import './App.css';
-import { fetchMovies } from "./api/movieDb.js";
-import SearchBar from "./SearchBar/SearchBar.jsx";
-import MoviesList from './MoviesList/MoviesList.jsx';
 
-function App() {
-  const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalResults, setTotalResults] = useState(0);
+export default function App() {
+  const [sessionId, setSessionId] = useState(() => {
+    return localStorage.getItem('tmdb_session_id') || null;
+  });
+  const [loading, setLoading] = useState(true);
+  const [ratedUpdateKey, setRatedUpdateKey] = useState(0);
 
-
-  const loadMovies = useCallback(async (query, page = 1) => {
-    try {
-      setIsLoading(true);
-      setError(null);
-
-      const data = await fetchMovies(query, page);
-
-      if (!data.results || data.results.length === 0) {
-        throw new Error('Ничего не найдено');
+  useEffect(() => {
+    const initSession = async () => {
+      try {
+        const session = await createGuestSession();
+        localStorage.setItem('tmdb_session_id', session.guest_session_id);
+        setSessionId(session.guest_session_id);
+      } catch (error) {
+        message.error('Не удалось создать сессию');
+      } finally {
+        setLoading(false);
       }
+    };
 
-      setMovies(data.results.filter(movie => movie.poster_path));
-      setTotalResults(data.total_results);
-      setCurrentPage(page);
+    if (!sessionId) initSession();
+    else setLoading(false);
+  }, [sessionId]);
 
-    } catch (err) {
-      setError(err.message);
-      setMovies([]);
-      setTotalResults(0);
-    } finally {
-      setIsLoading(false);
+  const handleRatingUpdate = async (movieId, rating) => {
+    try {
+      await rateMovie(movieId, rating, sessionId);
+
+      setRatedUpdateKey(prev => prev + 1);
+
+      message.success(`Фильм оценен на ${rating}`);
+    } catch (error) {
+      message.error('Ошибка при сохранении оценки');
     }
-  }, []);
-
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-    setCurrentPage(1);
-    loadMovies(query, 1);
   };
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    loadMovies(searchQuery, page);
-  };
+
+  if (loading) return <Spin/>;
 
   return (
-    <div className="app">
-      <div className="search-bar-container">
-        <SearchBar onSearch={handleSearch} />
+    <GenresProvider>
+      <div className="app">
+        <AppTabs
+          sessionId={sessionId}
+          onRatingUpdate={handleRatingUpdate}
+          ratedUpdateKey={ratedUpdateKey}
+        />
       </div>
-
-      <div className="content">
-        {isLoading ? (
-          <Spin size="large" />
-        ) : error ? (
-          <Alert message={error} type="error" />
-        ) : (
-          <>
-            <MoviesList movies={movies} />
-            {movies.length > 0 && (
-              <div className='pagination-container'>
-                <PaginationControl
-                  current={currentPage}
-                  total={totalResults}
-                  onChange={handlePageChange}
-                  showSizeChanger={false}
-                />
-              </div>
-            )}
-          </>
-        )}
-      </div>
-    </div>
+    </GenresProvider>
   );
 }
-
-export default App;

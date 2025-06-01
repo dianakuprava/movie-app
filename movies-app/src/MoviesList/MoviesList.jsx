@@ -1,11 +1,12 @@
 import { Spin, Alert, Empty } from 'antd';
-import Movie from '../Movie/Movie.jsx';
+import Movie from '../Movie/Movie';
+import './MovieList.css';
 
-const MoviesList = ({ movies, isLoading, error }) => {
+const MoviesList = ({ movies, isLoading, error, sessionId, hasSearched, onRatingUpdate }) => {
   if (isLoading) {
     return (
       <div className="loading-spinner">
-        <Spin size="large" />
+        <Spin/>
       </div>
     );
   }
@@ -13,19 +14,32 @@ const MoviesList = ({ movies, isLoading, error }) => {
   if (error) {
     return (
       <div className="error-message">
-        {error === 'Ничего не найдено' ? (
-          <Empty description="Ничего не найдено. Попробуйте другой запрос." />
-        ) : (
-          <Alert message="Ошибка" description={error} type="error" showIcon />
-        )}
+        <Alert message="Ошибка" description={error} type="error" showIcon />
       </div>
     );
+  }
+
+  if (hasSearched && movies.length === 0) {
+    return (
+      <div className="empty-message">
+        <Empty description="Ничего не найдено" />
+      </div>
+    );
+  }
+
+  if (!hasSearched) {
+    return null;
   }
 
   return (
     <div className="movies-list">
       {movies.map(movie => (
-        <Movie key={movie.id} movieData={movie} />
+        <Movie
+          key={movie.id}
+          movieData={movie}
+          sessionId={sessionId}
+          onRatingUpdate={onRatingUpdate}
+        />
       ))}
     </div>
   );

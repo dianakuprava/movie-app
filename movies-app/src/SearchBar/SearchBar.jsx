@@ -9,7 +9,7 @@ const SearchBar = ({ onSearch }) => {
   return (
     <Input
       placeholder="Type to search..."
-      onChange={(e) => handleSearch(e.target.value)}  // Исправлено здесь!
+      onChange={(e) => handleSearch(e.target.value)}
     />
   );
 };

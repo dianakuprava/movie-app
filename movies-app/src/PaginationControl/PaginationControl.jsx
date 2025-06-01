@@ -1,14 +1,16 @@
 import { Pagination } from 'antd';
+import './PaginationControl.css';
 
-const PaginationControl = ({ current, total, onChange }) => {
+export default function PaginationControl({ current, total, onChange }) {
   return (
-    <Pagination
-      current={current}
-      total={total}
-      onChange={onChange}
-      showSizeChanger={false}
-    />
+    <div className="pagination-container">
+      <Pagination
+        current={current}
+        total={total}
+        onChange={onChange}
+        showSizeChanger={false}
+        pageSize={20}
+      />
+    </div>
   );
-};
-
-export default PaginationControl;
+}

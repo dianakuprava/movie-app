@@ -1,0 +1,21 @@
+.rated-content {
+    padding: 20px 0;
+}
+
+.rated-tab-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .rated-content {
+        padding: 10px;
+    }
+
+    .rated-pagination .ant-pagination {
+        padding: 0 10px;
+    }
+}

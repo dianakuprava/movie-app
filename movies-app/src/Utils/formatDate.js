@@ -6,6 +6,6 @@ export const formatMovieDate = (dateString) => {
     const date = parseISO(dateString);
     return format(date, 'MMMM d, yyyy');
   } catch {
-    return dateString; // Возвращаем исходную строку в случае ошибки
+    return dateString;
   }
 };

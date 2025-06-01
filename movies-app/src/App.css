@@ -1,36 +1,14 @@
 #root {
-  max-width: 1280px;
+  max-width: 1016px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 34px 36px;
+  box-sizing: border-box;
 }
 
 .app {
-  max-width: 1016px;
-  margin: 0 auto;
-  padding: 32px 36px;
-  font-family: 'Inter', sans-serif;
-}
-
-.search-bar-container {
-  margin-bottom: 24px;
-}
-
-.content {
-  min-height: 60vh;
-}
-
-.movies-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 36px;
-  margin-bottom: 24px;
-}
-
-.pagination-container {
   display: flex;
-  justify-content: center;
-  margin-top: 24px;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .loading-spinner {
