@@ -16,7 +16,7 @@ export default function App() {
     const initSession = async () => {
       try {
         const session = await createGuestSession();
-        localStorage.setItem('tmbd_session_id', session.guest_session_id);
+        localStorage.setItem('tmdb_session_id', session.guest_session_id);
         setSessionId(session.guest_session_id);
       } catch (error) {
         message.error('Не удалось создать сессию');
