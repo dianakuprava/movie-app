@@ -16,7 +16,6 @@ export default function MovieRateStars({ movieId, sessionId, initialRating = 0, 
       setLoading(true);
       await rateMovie(movieId, value, sessionId);
       setRating(value);
-      // Pass movieId and rating to onRatingUpdate
       if (onRatingUpdate) onRatingUpdate(movieId, value);
     } catch (error) {
       message.error(error.message);
