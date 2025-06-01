@@ -1,0 +1,21 @@
+.stars-container .ant-rate {
+  font-size: 17px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.stars-container .ant-rate-star {
+  color: #faad14;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .stars-container .ant-rate {
+    font-size: 14px;
+  }
+
+  .stars-container .ant-rate-star {
+    margin-right: 2px;
+  }
+}
