@@ -1,5 +1,5 @@
 import { Spin, Alert, Empty } from 'antd';
-import Movie from '../Movie/Movie';
+import Movie from '../Movie/Movie.jsx';
 import './MovieList.css';
 
 const MoviesList = ({ movies, isLoading, error, sessionId, hasSearched, onRatingUpdate }) => {

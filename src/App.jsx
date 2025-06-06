@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Spin, message } from 'antd';
 import { createGuestSession } from './API/movieDb';
 import AppTabs from './components/AppTabs/AppTabs.jsx';
-import GenresProvider from './GenresProvider/GenresProvider';
+import GenresProvider from './components/GenresProvider/GenresProvider';
 import './App.css';
 
 export default function App() {

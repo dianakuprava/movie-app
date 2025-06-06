@@ -1,6 +1,6 @@
 import { Tabs } from 'antd';
-import SearchTab from '../../SearchTab/SearchTab.jsx';
-import RatedTab from '../../RatedTab/RatedTab.jsx';
+import SearchTab from '../SearchTab/SearchTab.jsx';
+import RatedTab from '../RatedTab/RatedTab.jsx';
 import './AppTabs.css';
 import './AppTabs.css';
 

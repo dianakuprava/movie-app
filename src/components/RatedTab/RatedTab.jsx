@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Spin, Empty, Alert } from 'antd';
-import MoviesList from '../MoviesList/MoviesList';
-import { fetchRatedMovies } from '../API/movieDb';
-import PaginationControl from '../PaginationControl/PaginationControl';
+import MoviesList from '../MoviesList/MoviesList.jsx';
+import { fetchRatedMovies } from '../../API/movieDb.js';
+import PaginationControl from '../PaginationControl/PaginationControl.jsx';
 import './RatedTab.css';
 
 export default function RatedTab({ sessionId, ratingsVersion }) {

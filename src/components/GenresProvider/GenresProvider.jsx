@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-import { fetchGenres } from '../API/movieDb.js';
+import { fetchGenres } from '../../API/movieDb.js';
 
 export const GenresContext = createContext();
 

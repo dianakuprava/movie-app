@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { GenresContext } from '../GenresProvider/GenresProvider';
-import { formatMovieDate } from '../Utils/formatDate';
-import { truncateText } from '../Utils/truncateText.js';
-import MovieRating from '../MovieRating/MovieRating';
-import MovieRateStars from '../MovieRateStars/MovieRateStars';
+import { GenresContext } from '../GenresProvider/GenresProvider.jsx';
+import { formatMovieDate } from '../../Utils/formatDate.js';
+import { truncateText } from '../../Utils/truncateText.js';
+import MovieRating from '../MovieRating/MovieRating.jsx';
+import MovieRateStars from '../MovieRateStars/MovieRateStars.jsx';
 import './Movie.css';
 
 function Movie({ movieData, sessionId, onRatingUpdate }) {

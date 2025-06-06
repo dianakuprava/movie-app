@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react';
-import SearchBar from '../SearchBar/SearchBar';
-import MoviesList from '../MoviesList/MoviesList';
-import PaginationControl from '../PaginationControl/PaginationControl';
-import { fetchMovies } from '../API/movieDb';
+import SearchBar from '../SearchBar/SearchBar.jsx';
+import MoviesList from '../MoviesList/MoviesList.jsx';
+import PaginationControl from '../PaginationControl/PaginationControl.jsx';
+import { fetchMovies } from '../../API/movieDb.js';
 import './SearchTab.css';
 
 export default function SearchTab({ sessionId, onRatingUpdate }) {

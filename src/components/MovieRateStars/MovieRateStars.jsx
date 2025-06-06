@@ -1,6 +1,6 @@
 import { Rate, message } from 'antd';
 import { useState, useEffect } from 'react';
-import { rateMovie } from '../API/movieDb';
+import { rateMovie } from '../../API/movieDb.js';
 import './MovieRateStars.css';
 
 export default function MovieRateStars({ movieId, sessionId, initialRating = 0, onRatingUpdate }) {
