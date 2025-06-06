@@ -1,0 +1,24 @@
+.custom-tabs .ant-tabs-nav::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 137px;
+  height: 1px;
+  margin: 0 auto;
+  background-color: rgba(217, 217, 217, 1);
+}
+
+.custom-tabs .ant-tabs-ink-bar {
+  width: 64.64px !important;
+  height: 2.24px !important;
+}
+
+.app-tabs {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 100;
+  max-width: 1016px;
+  margin: 0 auto;
+  width: 100%;
+}
